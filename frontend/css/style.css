@@ -1,0 +1,125 @@
+/* === Общие стили страницы === */
+body {
+    font-family: serif; /* наследование serif для всего */
+    margin: 0;
+    padding: 0;
+    background: #f8f8f8;
+    color: #222;
+}
+
+/* === Таблица-лейаут === */
+#layout {
+    border-collapse: collapse;
+    width: 100%;
+    background: white;
+}
+
+/* === Шапка === */
+#header {
+    text-align: center;
+    background: #e0e0f0;
+    padding: 10px;
+}
+
+/* Заголовок в шапке */
+#header h1 {
+    font-size: 20px;
+    color: darkblue;
+    margin: 0;
+    position: relative;
+}
+
+/* Псевдоэлемент: декоративная линия под шапкой */
+#header h1::after {
+    content: "";
+    display: block;
+    margin: 6px auto 0 auto;
+    width: 50%;
+    height: 2px;
+    background: darkblue;
+}
+
+/* === Форма === */
+#form-cell form table {
+    width: 100%;
+}
+
+#form-cell label {
+    margin-right: 5%;
+}
+
+#form-cell input[type="text"] {
+    width: 80%;
+    padding: 2%;
+    box-sizing: border-box;
+}
+
+/* Подсветка ошибок */
+.input-error {
+    border: 2px solid red;
+    background: #ffecec;
+}
+
+/* Контейнер ошибок */
+#errors {
+    margin-top: 10px;
+    color: red;
+    font-size: 14px;
+}
+#errors ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+/* === Кнопка === */
+button {
+    padding: 2% 5%; /* отступы в % */
+    font-size: 14px;
+    cursor: pointer;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+button:hover {
+    background: #45a049;
+}
+
+/* === График === */
+#graph {
+    background: #fafafa;
+    border: 1px solid #ccc;
+}
+
+/* Пример: псевдокласс hover для svg */
+#graph:hover {
+    background: #f0f0ff;
+}
+
+/* === История === */
+#history {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#history th, #history td {
+    border: 1px solid #ccc;
+    padding: 6px;
+    text-align: center;
+}
+
+/* Дочерние элементы: первая строка заголовка */
+#history thead > tr > th {
+    background: #ddd;
+}
+
+/* Чередование строк */
+#history tbody tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+/* Подсветка строки при наведении */
+#history tbody tr:hover {
+    background: #f1f7ff;
+}

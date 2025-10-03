@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Лабораторная работа — FastCGI + Java</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- decimal.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/decimal.js@10.4.3/decimal.min.js"></script>
+
+    <!-- DOM utils -->
+    <script defer src="js/dom.js"></script>
+
+    <!-- остальные модули -->
+    <script defer src="js/validator.js"></script>
+    <script defer src="js/api.js"></script>
+    <script defer src="js/store.js"></script>
+    <script defer src="js/view.js"></script>
+    <script defer src="js/app.js"></script>
+</head>
+<body>
+<table id="layout" border="1" cellspacing="0" cellpadding="8" width="100%">
+    <!-- Шапка -->
+    <tr>
+        <td colspan="2" id="header">
+            <h1>Столбченко Илья Викторович — P3216 — Вариант 467604</h1>
+        </td>
+    </tr>
+
+    <!-- Форма -->
+    <tr>
+        <td id="form-cell" width="40%">
+            <form id="point-form">
+                <table>
+                    <!-- X -->
+                    <tr>
+                        <td>X:</td>
+                        <td id="x-radios">
+                            <label><input type="radio" name="x" value="-5"> -5</label>
+                            <label><input type="radio" name="x" value="-4"> -4</label>
+                            <label><input type="radio" name="x" value="-3"> -3</label>
+                            <label><input type="radio" name="x" value="-2"> -2</label>
+                            <label><input type="radio" name="x" value="-1"> -1</label>
+                            <label><input type="radio" name="x" value="0"> 0</label>
+                            <label><input type="radio" name="x" value="1"> 1</label>
+                            <label><input type="radio" name="x" value="2"> 2</label>
+                            <label><input type="radio" name="x" value="3"> 3</label>
+                        </td>
+                    </tr>
+                    <!-- Y -->
+                    <tr>
+                        <td>Y:</td>
+                        <td>
+                            <input id="y" name="y" type="text" placeholder="(-5; 5)">
+                        </td>
+                    </tr>
+                    <!-- R -->
+                    <tr>
+                        <td>R:</td>
+                        <td>
+                            <input id="r" name="r" type="text" placeholder="(2; 5)">
+                        </td>
+                    </tr>
+                    <!-- Submit -->
+                    <tr>
+                        <td colspan="2" style="text-align: center;">
+                            <button type="submit">Проверить</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <!-- Контейнер для ошибок -->
+            <div id="errors"></div>
+        </td>
+
+        <!-- График -->
+        <td id="graph-cell" width="60%">
+            <div class="graph-wrap">
+                <img id="graph-img" src="img/area.png" alt="Область попадания (вариант)">
+            </div>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2">
+            <h2>История проверок</h2>
+            <table id="history" border="1" cellspacing="0" cellpadding="4" width="100%">
+                <thead>
+                <tr>
+                    <th>X</th>
+                    <th>Y</th>
+                    <th>R</th>
+                    <th>Попадание</th>
+                    <th>Время</th>
+                    <th>Время работы (мс)</th>
+                </tr>
+                </thead>
+                <tbody id="history-body"></tbody>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

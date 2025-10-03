@@ -1,0 +1,47 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+group = 'itmo.programming'
+version = '1.0-SNAPSHOT'
+
+repositories { mavenCentral() }
+
+dependencies {
+    // твоя FastCGI библиотека (лежит в backend/libs)
+    implementation files("${projectDir}/libs/fastcgi-lib.jar")
+
+    implementation "com.fasterxml.jackson.core:jackson-databind:2.18.0"
+    implementation "com.fasterxml.jackson.core:jackson-core:2.18.0"
+    implementation "com.fasterxml.jackson.core:jackson-annotations:2.18.0"
+    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.18.0"
+
+    testImplementation platform("org.junit:junit-bom:5.10.0")
+    testImplementation "org.junit.jupiter:junit-jupiter"
+}
+
+application {
+    // Main без пакета
+    mainClass = 'Main'
+}
+
+java {
+    toolchain { languageVersion = JavaLanguageVersion.of(17) }
+}
+
+tasks.test { useJUnitPlatform() }
+
+// обычный jar (не обязателен, но полезно иметь правильный манифест)
+tasks.jar {
+    manifest { attributes 'Main-Class': application.mainClass.get() }
+}
+
+// fat-jar со всеми зависимостями
+tasks.shadowJar {
+    archiveBaseName.set('backend')
+    archiveClassifier.set('all')      // файл будет backend-1.0-SNAPSHOT-all.jar
+    mergeServiceFiles()
+    manifest { attributes 'Main-Class': application.mainClass.get() }
+}
